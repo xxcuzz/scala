@@ -13,10 +13,10 @@ object SecondLab {
     //Task 3    (VARIANT 12)
     val list3 = List[Int](1, 2, 3, 4, 5, 6, 7, 8, 9, 13, 27, 55)
     val answer3 = List[Int](1, 2, 3, 5, 8, 13, 55)
-    assert(SecondLab.part2(list3) == answer3)
+    assert(SecondLab.deleteNonFib(list3) == answer3)
   }
 
-  def part2(list3: List[Int]): List[Int] = {
+  def deleteNonFib(list3: List[Int]): List[Int] = {
     equalsLists(onlyFibonacciNumbers(list3.max), list3)
   }
   def onlyFibonacciNumbers(cnt: Int, low: BigInt = 0, high: BigInt = 1, sofar: List[BigInt] = List()): List[BigInt] = {
