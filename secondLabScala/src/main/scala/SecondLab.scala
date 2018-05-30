@@ -1,5 +1,5 @@
 object SecondLab {
-  def main(args:Array[String]):Unit= {
+  def main(args: Array[String]):Unit= {
     //Task 1    (VARIANT 13)
     val list1 = List[Int](4, 2, 88, -100, -1, 0, 87)
     val answer1 = (-100, 88)
@@ -13,19 +13,25 @@ object SecondLab {
     //Task 3    (VARIANT 12)
     val list3 = List[Int](1, 2, 3, 4, 5, 6, 7, 8, 9, 13, 27, 55)
     val answer3 = List[Int](1, 2, 3, 5, 8, 13, 55)
-    assert(SecondLab.onlyFibonacciNumbers(list3) == answer3)
+    assert(SecondLab.part2(list3) == answer3)
   }
 
-  def onlyFibonacciNumbers(thirdList: List[Int]): List[Int]={
-
+  def part2(list3: List[Int]): List[Int] = {
+    equalsLists(onlyFibonacciNumbers(list3.max), list3)
+  }
+  def onlyFibonacciNumbers(cnt: Int, low: BigInt = 0, high: BigInt = 1, sofar: List[BigInt] = List()): List[BigInt] = {
+    if (cnt == 0)
+      (low :: sofar).reverse
+    else
+      onlyFibonacciNumbers(cnt - 1, high, low + high, low :: sofar)
+  }
+  def equalsLists(fib: List[BigInt], listThree: List[Int]): List[Int] = {
+    listThree.filter(fib.contains(_))
   }
 
   def minmaxTuple(simpleList: List[Int]):(Int, Int)={
     if(simpleList.nonEmpty){
-      (simpleList.sorted.head, simpleList.sorted.last)
-
-      //println(integerTuple._1)      //отладка принтами
-      //println(integerTuple._2)
+      (simpleList.min, simpleList.max)
     }
     else {
       (0,0)
